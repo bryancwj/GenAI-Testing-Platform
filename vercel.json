@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "Frontend/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
+    },
+    {
+      "src": "/login",
+      "dest": "/Frontend/login.html"
+    },
+    {
+      "src": "/main",
+      "dest": "/Frontend/main.html"
+    },
+    {
+      "src": "/Frontend/(.*)",
+      "dest": "/Frontend/$1"
+    },
+    {
+      "src": "/(.*\\.mp3)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*\\.mp4)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/Styles/(.*)",
+      "dest": "/public/Styles/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/Frontend/login.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Frontend/login.html"
+    }
+  ]
+}
