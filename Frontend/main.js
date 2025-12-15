@@ -55,11 +55,11 @@ fileInput.addEventListener("change", () => {
     console.log("file type: ", file.type);
 
     const allowedTypes = [
-        "/application/pdf", // .pdf document
-        "/application/vnd.openxmlformats-officedocument.presentationml.presentation", // PPTX document
-        "/application/msword", // .doc document
-        "/application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx document
-        "/application/vnd.ms-powerpoint" // .ppt document 
+        "application/pdf", // .pdf document
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation", // PPTX document
+        "application/msword", // .doc document
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx document
+        "application/vnd.ms-powerpoint" // .ppt document 
     ];
 
     const MAX_SIZE = 20 * 1024 * 1024;
