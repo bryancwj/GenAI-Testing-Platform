@@ -1,6 +1,7 @@
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatMessages = document.getElementById("chatMessages");
+const fileInput = document.getElementById("fileInput");
 
 function addMessage(text, sender) {
     const msg = document.createElement("div");
@@ -26,7 +27,7 @@ chatForm.addEventListener("submit", async (e) => {
     chatMessages.appendChild(thinkingMsg);
 
     try {
-        // ?? THIS is where your GenAI API call will go
+        // THIS is where your GenAI API call will go
         // const response = await fetch("/api/chat", { ... })
 
         setTimeout(() => {
@@ -37,3 +38,45 @@ chatForm.addEventListener("submit", async (e) => {
         thinkingMsg.textContent = "Error contacting AI service.";
     }
 });
+
+function addSystemMessage(text) {
+    const msg = document.createElement("div");
+    msg.className = "message system";
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    chatMesssages.scrollTop = chatMessages.scrollHeight;
+}
+
+fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    const allowedTypes = [
+        "/application/pdf", // .pdf document
+        "/application/vnd.openxmlformats-officedocument.presentationml.presentation", // PPTX document
+        "/application/msword", // .doc document
+        "/application/vnd.openxmlformats-officedocument.wordprocessingml.document" // .docx document
+    ];
+
+    const MAX_SIZE = 20 * 1024 * 1024;
+
+    if (!allowedTypes.includes(file.type)) {
+        addSystemMessage("Only PDF, PPTX, DOC, DOCX files are supported.")
+        fileInput.value = "";
+        return;
+    }
+
+    if (file.size > MAX_SIZE) {
+        addSystemMessage("File too large, Max size is 20MB.");
+        fileInput.value = "";
+        return;
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+
+    }
+
+    addSystemMessage(`File Selected: ${file.name} (${formatFileSize(file.size)})`);
+})

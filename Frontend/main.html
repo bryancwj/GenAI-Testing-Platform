@@ -24,9 +24,18 @@
         </div>
 
         <form id="chatForm" class="chat-input-area">
+            <label class="upload-btn">
+                <input 
+                    type="file"
+                    id="fileInput"
+                    accept=".pdf,.pptx,.doc,.docx"
+                    hidden
+                />
+            </label>
+
             <input type="text"
                    id="userInput"
-                   placeholder="Type your message..."
+                   placeholder="Type your message or upload a file..."
                    autocomplete="off"
                    required />
             <button type="submit">Send</button>
