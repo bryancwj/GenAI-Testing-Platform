@@ -51,6 +51,9 @@ fileInput.addEventListener("change", () => {
     const file = fileInput.files[0];
     if (!file) return;
 
+    console.log("file Name: ", file.name);
+    console.log("file type: ", file.type);
+
     const allowedTypes = [
         "/application/pdf", // .pdf document
         "/application/vnd.openxmlformats-officedocument.presentationml.presentation", // PPTX document
