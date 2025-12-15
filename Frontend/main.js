@@ -1,4 +1,4 @@
-const chatForm = document.getElementById("chatForm");
+﻿const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatMessages = document.getElementById("chatMessages");
 const fileInput = document.getElementById("fileInput");
@@ -20,7 +20,7 @@ chatForm.addEventListener("submit", async (e) => {
     addMessage(text, "user");
     userInput.value = "";
 
-    // ? Placeholder while GenAI responds
+    // ⏳ Placeholder while GenAI responds
     const thinkingMsg = document.createElement("div");
     thinkingMsg.classList.add("message", "bot");
     thinkingMsg.textContent = "Thinking...";
@@ -44,7 +44,7 @@ function addSystemMessage(text) {
     msg.className = "message system";
     msg.textContent = text;
     chatMessages.appendChild(msg);
-    chatMesssages.scrollTop = chatMessages.scrollHeight;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 fileInput.addEventListener("change", () => {
